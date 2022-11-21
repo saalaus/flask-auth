@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% import 'alert.html' as alert %}
+    {% if messages %}
+            {% for level, message in messages %}
+                {{alert.new_alert(level, message)}}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h3>Username: {{ username }}</h3>
+    <h3>Id: {{ id }}</h3>
+{% endblock %}

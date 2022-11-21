@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="tabs" style="display:flex; justify-content:center">
+    <li class="tab"><a class="active" href="#auth">Auth</a></li>
+    <li class="tab"><a href="#register">Registration</a></li>
+</ul>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% import 'alert.html' as alert %}
+{% if messages %}
+        {% for level, message in messages %}
+            {{alert.new_alert(level, message)}}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div id="auth">
+    <h3 style="text-align:center">Auth</h3>
+    <form action="{{ url_for('.login') }}" method="POST">
+        <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" name="username" required id="username-auth">
+            <label for="username-auth">username</label>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">password</i>
+            <input type="password" name="pass" required id="password-login" autocomplete>
+            <label for="password-login">pass</label>
+        </div>
+        <div style="text-align: center">
+            <button class="waves-effect waves-light btn" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div id="register">
+    <h3 style="text-align:center">Registration</h3>
+    <form action="{{ url_for('.registration') }}" method="POST">
+        <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <input type="text" name="username" required id="username-reg">
+            <label for="username-reg">username</label>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">password</i>
+            <input type="password" name="pass" required id="password-reg" autocomplete>
+            <label for="password-reg">pass</label>
+        </div>
+        <div class="input-field">
+            <i class="material-icons prefix">password</i>
+            <input type="password" name="confirm_pass" required id="confirm-password" autocomplete>
+            <label for="confirm-password">confirm password</label>
+        </div>
+        <div style="text-align: center">
+            <button class="waves-effect waves-light btn" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

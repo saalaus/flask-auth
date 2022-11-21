@@ -1,0 +1,27 @@
+{% macro new_alert(level, msg) %}
+    {% if level == "error" %}
+        {% set card_color = "red" %}
+        {% set text_color = "red" %}
+        {% set icon = "report" %}
+    {% elif level == "info" %}
+        {% set card_color = "blue" %}
+        {% set text_color = "blue" %}
+        {% set icon = "info" %}
+    {% elif level == "warn" %}
+        {% set card_color = "amber" %}
+        {% set text_color = "brown" %}
+        {% set icon = "report_problem" %}
+    {% endif %}
+    <div class="alert card {{card_color}} lighten-4 {{text_color}}-text text-darken-3">
+        <div class="card-content">
+            <p><i class="material-icons">{{icon}}</i>{{msg}}</p>
+        </div>
+    </div>
+    {% if condition %}
+        
+    {% elif condition2 %}
+        
+    {% else %}
+        
+    {% endif %}
+{% endmacro %}
